@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "454675864359",
+    "project_id": "emabooks-real",
+    "storage_bucket": "emabooks-real.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454675864359:android:40390c493ce90cb749a702",
+        "android_client_info": {
+          "package_name": "com.example.emabooks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuH1TASgCHaCzs-lYkSrQ6CQRnCKntrio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

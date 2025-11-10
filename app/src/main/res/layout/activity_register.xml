@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F6F7FB"
+    tools:context=".ActivityRegister">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- Card central -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:elevation="6dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp">
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvRegisterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Criar Conta"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:id="@+id/tvRegisterSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastre-se para acessar a biblioteca"
+                android:textSize="14sp"
+                android:textColor="#7A7F8C"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Nome Completo -->
+            <TextView
+                android:id="@+id/tvNomeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome Completo"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etNomeCompleto"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Seu nome completo"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="14dp" />
+
+            <!-- E-mail -->
+            <TextView
+                android:id="@+id/tvEmailLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etEmailCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="seu@email.com"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="14dp" />
+
+            <!-- Matrícula -->
+            <TextView
+                android:id="@+id/tvMatriculaLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Matrícula"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etMatricula"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Sua matrícula"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="14dp" />
+
+            <!-- Senha -->
+            <TextView
+                android:id="@+id/tvSenhaLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etSenhaCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Sua senha (mín. 6 caracteres)"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawablePadding="8dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="14dp" />
+
+            <!-- Confirmar Senha -->
+            <TextView
+                android:id="@+id/tvConfirmaSenhaLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar Senha"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etConfirmaSenha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Confirme sua senha"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawablePadding="8dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Erros de validação -->
+            <TextView
+                android:id="@+id/tvErroCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preencha todos os campos"
+                android:textColor="#D32F2F"
+                android:background="#1AF44336"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Botão Cadastrar -->
+            <Button
+                android:id="@+id/btnCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Cadastrar"
+                android:textAllCaps="false"
+                android:backgroundTint="#3D5AFE"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Rodapé: Já tem conta? Faça login -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvJaTemConta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Já tem uma conta? "
+                    android:textColor="#7A7F8C" />
+
+                <TextView
+                    android:id="@+id/tvFacaLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Faça login"
+                    android:textStyle="bold"
+                    android:textColor="#2F3AAE" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
