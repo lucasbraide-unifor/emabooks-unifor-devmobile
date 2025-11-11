@@ -61,11 +61,12 @@
                 android:id="@+id/etNomeCompleto"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="14dp"
+                android:background="@android:drawable/edit_text"
                 android:hint="Seu nome completo"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="14dp" />
+                android:singleLine="true" />
 
             <!-- E-mail -->
             <TextView
@@ -81,12 +82,13 @@
                 android:id="@+id/etEmailCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="14dp"
+                android:background="@android:drawable/edit_text"
                 android:hint="seu@email.com"
                 android:inputType="textEmailAddress"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="14dp" />
+                android:singleLine="true" />
 
             <!-- Matrícula -->
             <TextView
@@ -102,11 +104,13 @@
                 android:id="@+id/etMatricula"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="14dp"
+                android:background="@android:drawable/edit_text"
                 android:hint="Sua matrícula"
+                android:maxLines="1"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="14dp" />
+                android:singleLine="true" />
 
             <!-- Senha -->
             <TextView
@@ -122,14 +126,15 @@
                 android:id="@+id/etSenhaCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="14dp"
+                android:background="@android:drawable/edit_text"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawablePadding="8dp"
                 android:hint="Sua senha (mín. 6 caracteres)"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:drawableEnd="@android:drawable/ic_menu_view"
-                android:drawablePadding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="14dp" />
+                android:singleLine="true" />
 
             <!-- Confirmar Senha -->
             <TextView
@@ -145,14 +150,15 @@
                 android:id="@+id/etConfirmaSenha"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:drawable/edit_text"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawablePadding="8dp"
                 android:hint="Confirme sua senha"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:drawableEnd="@android:drawable/ic_menu_view"
-                android:drawablePadding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="10dp" />
+                android:singleLine="true" />
 
             <!-- Erros de validação -->
             <TextView

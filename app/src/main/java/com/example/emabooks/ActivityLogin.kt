@@ -25,7 +25,7 @@ class ActivityLogin : AppCompatActivity() {
     private lateinit var tvCadastro: TextView
     private lateinit var tvEsqueciSenha: TextView
 
-    private val collectionName = "pessoa" // mesma coleção usada no cadastro
+    private val collectionName = "user" // mesma coleção usada no cadastro
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +46,9 @@ class ActivityLogin : AppCompatActivity() {
             startActivity(Intent(this, ActivityRegister::class.java))
         }
 
-        // Navegação para "esqueci minha senha" (se já tiver a Activity)
+        // Navegação para "esqueci minha senha"
         tvEsqueciSenha.setOnClickListener {
-            // startActivity(Intent(this, ActivityForgotPassword::class.java))
+            startActivity(Intent(this, ActivityForgotPassword::class.java))
             Toast.makeText(this, "Fluxo de recuperação em construção", Toast.LENGTH_SHORT).show()
         }
 

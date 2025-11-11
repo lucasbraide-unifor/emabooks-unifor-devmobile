@@ -5,6 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.ai.client.generativeai.GenerativeModel
+
+lateinit var generativeModel : GenerativeModel
 
 class ActivityHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

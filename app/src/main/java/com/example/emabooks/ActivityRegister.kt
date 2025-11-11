@@ -25,7 +25,7 @@ class ActivityRegister : AppCompatActivity() {
 
     // Firestore
     private lateinit var fb: FirebaseFirestore
-    private val collectionName = "pessoa" // mantendo o padrão salvo no contexto
+    private val collectionName = "user" // mantendo o padrão salvo no contexto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +67,12 @@ class ActivityRegister : AppCompatActivity() {
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return showError("Insira um e-mail e senha válidos")
+        }
+        if (matricula.length < 7 || matricula.length > 8) {
+            return showError("Insira uma matrícula válida")
+        }
+        if (!matricula.matches(Regex("^[0-9]+$"))) {
+            return showError("A matrícula deve conter apenas números")
         }
         if (senha.length < 6) {
             return showError("Insira um e-mail e senha válidos")
@@ -144,6 +150,6 @@ class ActivityRegister : AppCompatActivity() {
         btnCadastrar.isEnabled = !loading
         tvFacaLogin.isEnabled = !loading
         // Poderia trocar texto do botão para "Aguarde..." se quiser:
-        // btnCadastrar.text = if (loading) "Aguarde..." else "Cadastrar"
+        btnCadastrar.text = if (loading) "Aguarde..." else "Cadastrar"
     }
 }
