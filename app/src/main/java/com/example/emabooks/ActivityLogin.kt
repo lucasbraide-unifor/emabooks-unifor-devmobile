@@ -25,11 +25,205 @@ class ActivityLogin : AppCompatActivity() {
     private lateinit var tvCadastro: TextView
     private lateinit var tvEsqueciSenha: TextView
 
+    private fun seedLivrosExemplo() {
+        val fb = FirebaseFirestore.getInstance()
+        val colecao = fb.collection("livros")
+
+        val livros = listOf(
+            mapOf(
+                "id" to "livro001",
+                "titulo" to "Arquitetura de Sistemas Distribuídos",
+                "autor" to "Andrew Tanenbaum",
+                "anoPublicacao" to 2020,
+                "editora" to "Pearson",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("Computação", "Redes", "Sistemas"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/8231856-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 5,
+                "exemplaresFisicosDisponiveis" to 3,
+                "urlAcessoDigital" to null,
+                "descricao" to "Introdução prática e teórica aos principais conceitos de sistemas distribuídos modernos.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro002",
+                "titulo" to "Clean Code",
+                "autor" to "Robert C. Martin",
+                "anoPublicacao" to 2008,
+                "editora" to "Prentice Hall",
+                "tipoAcervo" to "DIGITAL",
+                "categorias" to listOf("Programação"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/5185341-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 0,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to "https://filesamples.com/samples/document/pdf/sample3.pdf",
+                "descricao" to "Livro clássico sobre boas práticas de código limpo, legível e fácil de manter.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro003",
+                "titulo" to "Inteligência Artificial Moderna",
+                "autor" to "Stuart Russell",
+                "anoPublicacao" to 2021,
+                "editora" to "Elsevier",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("IA", "Computação"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/10523386-L.jpg",
+                "statusGeral" to "INDISPONIVEL",
+                "totalExemplaresFisicos" to 2,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to null,
+                "descricao" to "Visão abrangente e atualizada dos fundamentos e aplicações de inteligência artificial.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+
+            // ---- MAIS 7 LIVROS ----
+
+            mapOf(
+                "id" to "livro004",
+                "titulo" to "Estruturas de Dados e Algoritmos em Java",
+                "autor" to "Michael T. Goodrich",
+                "anoPublicacao" to 2016,
+                "editora" to "Wiley",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("Programação"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/240727-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 4,
+                "exemplaresFisicosDisponiveis" to 2,
+                "urlAcessoDigital" to null,
+                "descricao" to "Abordagem didática de estruturas de dados e algoritmos utilizando Java como linguagem base.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro005",
+                "titulo" to "Padrões de Projeto",
+                "autor" to "Erich Gamma",
+                "anoPublicacao" to 1994,
+                "editora" to "Addison-Wesley",
+                "tipoAcervo" to "DIGITAL",
+                "categorias" to listOf("Arquitetura de Software"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/8235086-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 0,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to "https://filesamples.com/samples/document/pdf/sample1.pdf",
+                "descricao" to "Referência clássica sobre padrões de projeto orientados a objetos para projetos reutilizáveis.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro006",
+                "titulo" to "Design de Interfaces",
+                "autor" to "Alan Cooper",
+                "anoPublicacao" to 2014,
+                "editora" to "Wiley",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("UX/UI"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/8319252-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 3,
+                "exemplaresFisicosDisponiveis" to 1,
+                "urlAcessoDigital" to null,
+                "descricao" to "Guia prático de design de interfaces focado em experiência do usuário e usabilidade.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro007",
+                "titulo" to "Deep Learning",
+                "autor" to "Ian Goodfellow",
+                "anoPublicacao" to 2016,
+                "editora" to "MIT Press",
+                "tipoAcervo" to "DIGITAL",
+                "categorias" to listOf("IA", "Machine Learning"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/8313781-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 0,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to "https://filesamples.com/samples/document/pdf/sample2.pdf",
+                "descricao" to "Livro avançado sobre deep learning, cobrindo teoria, modelos e aplicações práticas.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro008",
+                "titulo" to "Introdução ao Machine Learning",
+                "autor" to "Ethem Alpaydin",
+                "anoPublicacao" to 2020,
+                "editora" to "MIT Press",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("IA"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/10909225-L.jpg",
+                "statusGeral" to "INDISPONIVEL",
+                "totalExemplaresFisicos" to 1,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to null,
+                "descricao" to "Introdução acessível aos principais algoritmos e conceitos de aprendizado de máquina.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro009",
+                "titulo" to "Sistemas Operacionais Modernos",
+                "autor" to "Andrew Tanenbaum",
+                "anoPublicacao" to 2015,
+                "editora" to "Pearson",
+                "tipoAcervo" to "FISICO",
+                "categorias" to listOf("Computação"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/7984913-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 6,
+                "exemplaresFisicosDisponiveis" to 3,
+                "urlAcessoDigital" to null,
+                "descricao" to "Estudo completo sobre conceitos, arquitetura e implementação de sistemas operacionais.",
+                "createdAt" to null,
+                "updatedAt" to null
+            ),
+            mapOf(
+                "id" to "livro010",
+                "titulo" to "O Programador Pragmático",
+                "autor" to "Andrew Hunt",
+                "anoPublicacao" to 2019,
+                "editora" to "Addison-Wesley",
+                "tipoAcervo" to "DIGITAL",
+                "categorias" to listOf("Carreira", "Programação"),
+                "capaUrl" to "https://covers.openlibrary.org/b/id/240727-L.jpg",
+                "statusGeral" to "DISPONIVEL",
+                "totalExemplaresFisicos" to 0,
+                "exemplaresFisicosDisponiveis" to 0,
+                "urlAcessoDigital" to "https://filesamples.com/samples/document/pdf/sample4.pdf",
+                "descricao" to "Conselhos práticos para desenvolvimento de software com foco em qualidade e evolução de carreira.",
+                "createdAt" to null,
+                "updatedAt" to null
+            )
+        )
+
+        livros.forEach { livro ->
+            val idDoc = livro["id"] as String
+            colecao.document(idDoc).set(livro)
+                .addOnSuccessListener {
+                    // opcional: log ou Toast
+                }
+                .addOnFailureListener { e ->
+                    e.printStackTrace()
+                }
+        }
+    }
+
     private val collectionName = "user" // mesma coleção usada no cadastro
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // seedLivrosExemplo()
 
         fb = Firebase.firestore
 
@@ -93,9 +287,12 @@ class ActivityLogin : AppCompatActivity() {
                     setLoading(false)
                     Toast.makeText(this, "Login bem-sucedido", Toast.LENGTH_SHORT).show()
 
-                    // TODO: redirecionar para a página inicial do app
-                    // startActivity(Intent(this, ActivityHome::class.java))
-                    // finish()
+                    val userId = doc.id             // ID do documento na coleção "user"
+                    SessionManager.salvarUsuarioId(this, userId)
+
+                    // Se logar correto -> Redireciona pra Home
+                    startActivity(Intent(this, ActivityHome::class.java))
+                    finish()
 
                 } else {
                     setLoading(false)

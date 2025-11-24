@@ -26,9 +26,22 @@
         <activity
             android:name=".ActivityRegister"
             android:exported="false" />
+
+        <activity android:name=".ActivityReservas" />
+
+        <activity android:name=".ActivityReservaDetails" />
+
+        <activity android:name=".ActivityMinhaConta" />
+
+
+        <activity
+            android:name=".ActivityBookDetails"
+            android:exported="false"/>
+
         <activity
             android:name=".ActivityLogin"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,11 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6F7FB"
     tools:context=".ActivityHome">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!-- HEADER / APP BAR -->
+  <LinearLayout
+      android:id="@+id/layoutHeader"
+      android:layout_width="0dp"
+      android:layout_height="120dp"
+      android:orientation="vertical"
+      android:paddingStart="16dp"
+      android:paddingEnd="16dp"
+      android:paddingTop="16dp"
+      android:paddingBottom="12dp"
+      android:background="#3D5AFE"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloAcervo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acervo Digital"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Barra de busca + botão Buscar -->
+    <LinearLayout
+        android:id="@+id/layoutBusca"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp"
+        android:gravity="center_vertical"
+        android:elevation="4dp"
+        android:clipToPadding="false"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp">
+
+      <EditText
+          android:id="@+id/etBuscaLivro"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:hint="Busque por título ou autor"
+          android:singleLine="true"
+          android:imeOptions="actionSearch"
+          android:inputType="text"
+          android:background="@android:color/transparent"
+          android:paddingEnd="8dp"
+          android:importantForAutofill="no"
+          tools:text="Introdução à Programação" />
+
+      <Button
+          android:id="@+id/btnBuscarLivro"
+          android:layout_width="wrap_content"
+          android:layout_height="32dp"
+          android:text="Buscar"
+          android:textAllCaps="false"
+          android:backgroundTint="#3D5AFE"
+          android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <!-- BREADCRUMBS / FILTROS / ORDENAÇÃO / PÁGINA -->
+  <HorizontalScrollView
+      android:id="@+id/scrollFiltroOrdenacao"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginTop="8dp"
+      android:scrollbars="none"
+      app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:id="@+id/layoutFiltros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+      <!-- Últimos livros adicionados -->
+      <TextView
+          android:id="@+id/tvUltimosLivros"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Livros:"
+          android:textSize="12sp"
+          android:textStyle="bold" />
+
+      <Space
+          android:layout_width="24dp"
+          android:layout_height="0dp" />
+
+      <!-- Filtro disponibilidade -->
+      <TextView
+          android:id="@+id/tvFiltrarPor"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="FILTRAR POR: "
+          android:textAllCaps="true"
+          android:textSize="12sp" />
+
+      <TextView
+          android:id="@+id/tvFiltroDisponiveis"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="DISPONÍVEIS"
+          android:textSize="12sp"
+          android:textStyle="bold"
+          android:paddingEnd="4dp"
+          android:clickable="true"
+          android:focusable="true" />
+
+      <TextView
+          android:id="@+id/tvFiltroSeparador"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="/"
+          android:textSize="12sp"
+          android:paddingEnd="4dp" />
+
+      <TextView
+          android:id="@+id/tvFiltroIndisponiveis"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="INDISPONÍVEIS"
+          android:textSize="12sp"
+          android:clickable="true"
+          android:focusable="true" />
+
+      <!-- Espaço antes do limpar -->
+      <Space
+          android:layout_width="24dp"
+          android:layout_height="0dp" />
+
+      <!-- Botão de limpar filtros/busca -->
+      <TextView
+          android:id="@+id/tvLimparFiltros"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="LIMPAR"
+          android:textSize="12sp"
+          android:textAllCaps="true"
+          android:textColor="#3D5AFE"
+          android:clickable="true"
+          android:focusable="true"
+          android:paddingStart="4dp"
+          android:paddingEnd="4dp" />
+
+      <Space
+          android:layout_width="24dp"
+          android:layout_height="0dp" />
+
+      <!-- Ordenação -->
+      <TextView
+          android:id="@+id/tvOrdenarPor"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="ORDENAR POR: "
+          android:textAllCaps="true"
+          android:textSize="12sp" />
+
+      <TextView
+          android:id="@+id/tvOrdenarTitulo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="TÍTULO"
+          android:textSize="12sp"
+          android:textStyle="bold"
+          android:paddingEnd="4dp"
+          android:clickable="true"
+          android:focusable="true" />
+
+      <TextView
+          android:id="@+id/tvOrdenarSeparador"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="/"
+          android:textSize="12sp"
+          android:paddingEnd="4dp" />
+
+      <TextView
+          android:id="@+id/tvOrdenarAutor"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="AUTOR"
+          android:textSize="12sp"
+          android:clickable="true"
+          android:focusable="true" />
+
+      <Space
+          android:layout_width="24dp"
+          android:layout_height="0dp" />
+
+      <!-- Informação de página -->
+      <TextView
+          android:id="@+id/tvInfoPagina"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Página 1 de 1"
+          android:textSize="12sp" />
+    </LinearLayout>
+  </HorizontalScrollView>
+
+  <!-- ESTADO DE CARREGAMENTO -->
+  <TextView
+      android:id="@+id/tvBuscando"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="4dp"
+      android:text="Buscando..."
+      android:textStyle="italic"
+      android:textSize="12sp"
+      android:textColor="#7A7F8C"
+      android:visibility="gone"
+      app:layout_constraintTop_toBottomOf="@id/scrollFiltroOrdenacao"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <!-- SCROLL DA LISTA + PAGINAÇÃO -->
+  <ScrollView
+      android:id="@+id/scrollLista"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:fillViewport="true"
+      app:layout_constraintTop_toBottomOf="@id/tvBuscando"
+      app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:id="@+id/layoutListaEPaginacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp">
+
+      <!-- LISTA DE LIVROS (RecyclerView com cards) -->
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rvLivros"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:listitem="@layout/item_livro" />
+
+      <!-- CONTROLES DE PAGINAÇÃO (Anterior / Próximo) -->
+      <LinearLayout
+          android:id="@+id/layoutPaginacao"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="center"
+          android:layout_marginTop="4dp">
+
+        <TextView
+            android:id="@+id/tvPaginaAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Anterior"
+            android:textSize="14sp"
+            android:textColor="#3D5AFE"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="24dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/tvPaginaProxima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Próximo →"
+            android:textSize="14sp"
+            android:textColor="#3D5AFE"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+
+  <!-- BOTTOM NAVIGATION -->
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomNavigation"
+      android:layout_width="0dp"
+      android:layout_height="64dp"
+      android:background="@android:color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:menu="@menu/menu_bottom_navigation"
+      app:labelVisibilityMode="labeled" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

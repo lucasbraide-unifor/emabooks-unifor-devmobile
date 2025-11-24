@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    card_view:cardElevation="3dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="8dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvTituloReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID do Livro: XYZ"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#212121" />
+
+        <TextView
+            android:id="@+id/tvStatusReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: ATIVA"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="#424242"/>
+
+        <TextView
+            android:id="@+id/tvPosicaoFila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Posição na fila: 1"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:textColor="#757575"/>
+
+        <TextView
+            android:id="@+id/tvExpiraEm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Expira em: 10/10/2025"
+            android:layout_marginTop="6dp"
+            android:textSize="13sp"
+            android:textColor="#424242"/>
+
+        <TextView
+            android:id="@+id/tvBadgeExpirando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXPIRANDO"
+            android:textSize="11sp"
+            android:textColor="@android:color/white"
+            android:padding="6dp"
+            android:background="#FFA000"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
