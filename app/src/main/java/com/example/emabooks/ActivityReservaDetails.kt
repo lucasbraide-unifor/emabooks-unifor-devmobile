@@ -240,8 +240,6 @@ class ActivityReservaDetails : AppCompatActivity() {
         return builder
     }
 
-    // ---------------- CANCELAR RESERVA ----------------
-
 // ---------------- RENOVAÇÃO DE RESERVA ----------------
 
     private fun setupRenovarReserva(r: Reserva) {

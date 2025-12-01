@@ -26,10 +26,21 @@
         <activity
             android:name=".ActivityRegister"
             android:exported="false" />
+        <activity android:name=".ActivityAdminReservaDetalhe"/>
+        <activity android:name=".ActivityAdminReservas"/>
 
+        <activity android:name=".ActivityAdicionarUsuario"/>
+        <activity android:name=".ActivityAdminUsuarios"/>
+        <activity android:name=".ActivityAdminUsuarioDetalhe"/>
         <activity android:name=".ActivityReservas" />
-
+        <activity android:name=".ActivityEditarUsuario"/>
         <activity android:name=".ActivityReservaDetails" />
+        <activity android:name=".ActivityAdminAcervo"/>
+        <activity android:name=".ActivityAdminLivroDetalhe"/>
+        <activity android:name=".AdminDashboardActivity"/>
+        <activity android:name=".ActivityAdminLivroForm"/>
+        <activity android:name=".ActivityAdminLivroEditar"/>
+        <activity android:name=".ActivityAdminConfiguracoes"/>
 
         <activity android:name=".ActivityMinhaConta" />
 

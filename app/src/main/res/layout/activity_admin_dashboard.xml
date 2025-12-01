@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAdminDashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F7F8"
+    tools:context=".AdminDashboardActivity">
+
+    <!-- TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdmin"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#10172B"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:title="Painel administrativo"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CONTEÚDO ROLÁVEL -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAdmin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- CARD BOAS-VINDAS -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="3dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bem-vindo, administrador!"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewWelcomeSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Selecione uma das opções abaixo para gerenciar o sistema da biblioteca."
+                        android:textColor="#6B7280"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LINHA 1: ACERVO -->
+            <LinearLayout
+                android:id="@+id/rowCards1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- CARD ACERVO -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewAcervo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <FrameLayout
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@android:color/transparent">
+
+                            <ImageView
+                                android:id="@+id/imageViewAcervoIcon"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_agenda"
+                                android:contentDescription="Gerenciar acervo" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/textViewAcervoTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Acervo"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewAcervoDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Gerenciar livros e materiais"
+                            android:textAlignment="center"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- LINHA 2: RESERVAS / MULTAS -->
+            <LinearLayout
+                android:id="@+id/rowCards2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- CARD RESERVAS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewReservas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <FrameLayout
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@android:color/transparent">
+
+                            <ImageView
+                                android:id="@+id/imageViewReservasIcon"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_my_calendar"
+                                android:contentDescription="Gerenciar reservas" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/textViewReservasTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reservas"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewReservasDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Gerenciar reservas de livros"
+                            android:textAlignment="center"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- CARD MULTAS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewMultas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <FrameLayout
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@android:color/transparent">
+
+                            <ImageView
+                                android:id="@+id/imageViewMultasIcon"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_manage"
+                                android:contentDescription="Gerenciar multas" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/textViewMultasTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Multas"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewMultasDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Gerenciar multas e pagamentos"
+                            android:textAlignment="center"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- LINHA 3: USUÁRIOS / CONFIGURAÇÕES -->
+            <LinearLayout
+                android:id="@+id/rowCards3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- CARD USUÁRIOS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewUsuarios"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <FrameLayout
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@android:color/transparent">
+
+                            <ImageView
+                                android:id="@+id/imageViewUsuariosIcon"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_myplaces"
+                                android:contentDescription="Gerenciar usuários" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/textViewUsuariosTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Usuários"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewUsuariosDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Gerenciar usuários e admins"
+                            android:textAlignment="center"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- CARD CONFIGURAÇÕES -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewConfiguracoes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <FrameLayout
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@android:color/transparent">
+
+                            <ImageView
+                                android:id="@+id/imageViewConfiguracoesIcon"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_preferences"
+                                android:contentDescription="Configurações do sistema" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/textViewConfiguracoesTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Configurações"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewConfiguracoesDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Configurações do sistema"
+                            android:textAlignment="center"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- CARD RESUMO RÁPIDO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewResumoRapido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewResumoRapidoTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resumo rápido"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- LIVROS CADASTRADOS -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutResumoLivros"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+                            android:id="@+id/textViewLivrosLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Livros cadastrados:"
+                            android:textColor="#4B5563"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textViewLivrosValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textColor="#111827"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/textViewLivrosLabel"
+                            app:layout_constraintBottom_toBottomOf="@id/textViewLivrosLabel" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- RESERVAS PENDENTES -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutResumoReservas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/textViewReservasLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reservas pendentes:"
+                            android:textColor="#4B5563"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textViewReservasValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textColor="#111827"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/textViewReservasLabel"
+                            app:layout_constraintBottom_toBottomOf="@id/textViewReservasLabel" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- MULTAS EM ABERTO -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutResumoMultas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/textViewMultasLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Multas em aberto:"
+                            android:textColor="#4B5563"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textViewMultasValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textColor="#EF4444"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/textViewMultasLabel"
+                            app:layout_constraintBottom_toBottomOf="@id/textViewMultasLabel" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

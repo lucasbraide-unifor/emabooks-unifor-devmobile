@@ -49,9 +49,6 @@ class ActivityMinhaConta : AppCompatActivity() {
     private val listaFavoritos = mutableListOf<Livro>()
     private lateinit var favoritosAdapter: FavoriteBooksAdapter
 
-    // PREFS LOCAIS
-    private val prefsName = "user_settings"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_minha_conta)
@@ -70,6 +67,8 @@ class ActivityMinhaConta : AppCompatActivity() {
         setupConfigControls()
         setupFavoritosRecycler()
         setupLogout()
+
+        AppConfigManager.applyUserConfig(this)
 
         carregarDadosUsuario()
         carregarResumoEmprestimos()
@@ -162,8 +161,6 @@ class ActivityMinhaConta : AppCompatActivity() {
         val tamanhosFonte = arrayOf("Padrão", "Médio", "Grande")
         val contrastes = arrayOf("Padrão", "Alto contraste")
 
-        val prefs = getSharedPreferences(prefsName, Context.MODE_PRIVATE)
-
         val fontAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_dropdown_item,
@@ -178,9 +175,9 @@ class ActivityMinhaConta : AppCompatActivity() {
         )
         spinnerContraste.adapter = contrastAdapter
 
-        val tamanhoIdx = prefs.getInt("font_size_index", 0)
-        val contrasteIdx = prefs.getInt("contrast_index", 0)
-        val notificacoesAtivas = prefs.getBoolean("notifications_enabled", true)
+        val tamanhoIdx = AppConfigManager.getFontSizeIndex(this)
+        val contrasteIdx = AppConfigManager.getContrastIndex(this)
+        val notificacoesAtivas = AppConfigManager.isNotificationsEnabled(this)
 
         spinnerTamanhoFonte.setSelection(tamanhoIdx.coerceIn(0, tamanhosFonte.lastIndex))
         spinnerContraste.setSelection(contrasteIdx.coerceIn(0, contrastes.lastIndex))
@@ -193,7 +190,8 @@ class ActivityMinhaConta : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                prefs.edit().putInt("font_size_index", position).apply()
+                AppConfigManager.setFontSizeIndex(this@ActivityMinhaConta, position)
+                AppConfigManager.applyUserConfig(this@ActivityMinhaConta)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -206,14 +204,15 @@ class ActivityMinhaConta : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                prefs.edit().putInt("contrast_index", position).apply()
+                AppConfigManager.setContrastIndex(this@ActivityMinhaConta, position)
+                AppConfigManager.applyUserConfig(this@ActivityMinhaConta)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
         switchNotificacoes.setOnCheckedChangeListener { _, isChecked ->
-            prefs.edit().putBoolean("notifications_enabled", isChecked).apply()
+            AppConfigManager.setNotificationsEnabled(this, isChecked)
         }
     }
 
@@ -234,7 +233,7 @@ class ActivityMinhaConta : AppCompatActivity() {
     private fun carregarDadosUsuario() {
         val uid = userId ?: return
 
-        fb.collection("pessoa")
+        fb.collection("users")
             .document(uid)
             .get()
             .addOnSuccessListener { doc ->
@@ -384,7 +383,7 @@ class FavoriteBooksAdapter(
                 false
             } else {
                 when (livro.tipoAcervo) {
-                    TipoAcervo.FISICO -> livro.exemplaresFisicosDisponiveis > 0
+                    TipoAcervo.FISICO -> true
                     TipoAcervo.DIGITAL, TipoAcervo.HIBRIDO -> true
                 }
             }

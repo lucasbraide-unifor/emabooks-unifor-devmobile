@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAdicionarUsuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FAFB"
+    tools:context=".ActivityAdicionarUsuario">
+
+    <!-- TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdicionarUsuario"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#0F172A"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:title="Adicionar usuário"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CONTEÚDO SCROLLÁVEL -->
+    <ScrollView
+        android:id="@+id/scrollAdicionarUsuario"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAdicionarUsuario"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/layoutAdicionarUsuarioContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- CARD DADOS DO USUÁRIO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDadosUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvTituloDadosUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dados do usuário"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Nome completo -->
+                    <TextView
+                        android:id="@+id/tvLabelNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Nome completo"
+                        android:textColor="#4B5563"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/etNomeUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Digite o nome completo"
+                        android:inputType="textPersonName"
+                        android:padding="8dp"
+                        android:textColor="#111827"
+                        android:textColorHint="#9CA3AF"
+                        android:textSize="14sp" />
+
+                    <!-- Email -->
+                    <TextView
+                        android:id="@+id/tvLabelEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="E-mail"
+                        android:textColor="#4B5563"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/etEmailUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/transparent"
+                        android:hint="usuario@exemplo.com"
+                        android:inputType="textEmailAddress"
+                        android:padding="8dp"
+                        android:textColor="#111827"
+                        android:textColorHint="#9CA3AF"
+                        android:textSize="14sp" />
+
+                    <!-- Matrícula -->
+                    <TextView
+                        android:id="@+id/tvLabelMatricula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Matrícula"
+                        android:textColor="#4B5563"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/etMatriculaUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Apenas números"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="8dp"
+                        android:textColor="#111827"
+                        android:textColorHint="#9CA3AF"
+                        android:textSize="14sp" />
+
+                    <!-- Admin switch -->
+                    <LinearLayout
+                        android:id="@+id/layoutAdminSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvLabelAdmin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Conceder acesso de administrador"
+                            android:textColor="#4B5563"
+                            android:textSize="13sp" />
+
+                        <Switch
+                            android:id="@+id/switchAdmin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAdminAviso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Atenção: admins têm acesso às telas de gestão do sistema."
+                        android:textColor="#F97316"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- AÇÕES -->
+            <LinearLayout
+                android:id="@+id/layoutBotoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCancelar"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Cancelar"
+                    android:textAllCaps="false"
+                    android:textSize="13sp" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSalvar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#0F172A"
+                    android:text="Adicionar"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

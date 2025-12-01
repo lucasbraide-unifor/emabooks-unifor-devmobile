@@ -17,8 +17,6 @@ data class Livro(
     val descricao: String? = null,
     val capaUrl: String? = null,
     val statusGeral: StatusLivro = StatusLivro.DISPONIVEL,
-    val totalExemplaresFisicos: Int = 0,
-    val exemplaresFisicosDisponiveis: Int = 0,
     val urlAcessoDigital: String? = null,
     val createdAt: Timestamp? = null,
     val updatedAt: Timestamp? = null

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Toolbar admin -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdminConfig"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/black"
+        app:title="Configurações do sistema"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+    <!-- Botão de logout no topo direito -->
+    <ImageButton
+        android:id="@+id/btnLogoutAdminConfig"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end|top"
+        android:layout_margin="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_lock_power_off"
+        android:tint="@android:color/white"
+        android:contentDescription="Sair do app" />
+
+    <!-- Conteúdo principal -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="80dp"
+        android:padding="16dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Info do usuário logado -->
+            <TextView
+                android:id="@+id/tvUsuarioLogadoTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuário logado"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <TextView
+                android:id="@+id/tvUsuarioLogadoInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="—"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/darker_gray" />
+
+            <!-- Acessibilidade -->
+            <TextView
+                android:id="@+id/tvAcessibilidadeTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Acessibilidade"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchAltoContrasteAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Modo alto contraste" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchFonteMaiorAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Fonte maior" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchReduzirAnimacoesAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Reduzir animações" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/darker_gray" />
+
+            <!-- Configurações de empréstimo -->
+            <TextView
+                android:id="@+id/tvEmprestimoTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Configurações de empréstimo"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <!-- Prazo padrão (dias) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Prazo padrão de empréstimo (dias)*"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrazoPadraoDias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:hint="Ex: 7" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Número máximo de renovações -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Número máximo de renovações*"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMaxRenovacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:hint="Ex: 2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Dias antes para notificação -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Dias antes para avisar devolução*"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDiasAvisoDevolucao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:hint="Ex: 3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Resumo das configurações -->
+            <TextView
+                android:id="@+id/tvResumoConfiguracoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Resumo das configurações será exibido aqui."
+                android:textAppearance="@android:style/TextAppearance.Small" />
+
+            <!-- Botões Salvar / Cancelar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelarConfigAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Cancelar" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvarConfigAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salvar" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Rodapé com versão, data e licença -->
+    <LinearLayout
+        android:id="@+id/layoutFooterSistema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvVersaoSistema"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Versão: —"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+
+        <TextView
+            android:id="@+id/tvUltimaAtualizacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Última atualização: —"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+
+        <TextView
+            android:id="@+id/tvTipoLicenca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Licença: Acadêmica"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

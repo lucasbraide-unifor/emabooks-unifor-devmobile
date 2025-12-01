@@ -20,7 +20,7 @@ class ActivityResetPassword : AppCompatActivity() {
     private lateinit var tvErrorNotMatch: TextView
 
     private lateinit var fb: FirebaseFirestore
-    private val collectionName = "user"
+    private val collectionName = "users"
 
     private val userId by lazy { intent.getStringExtra("userId") }
 

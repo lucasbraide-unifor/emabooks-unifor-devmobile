@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLivroEditar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F7F8"
+    tools:context=".ActivityAdminLivroEditar">
+
+    <!-- TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarLivroEditar"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#10172B"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:title="Editar livro"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CONTEÚDO -->
+    <ScrollView
+        android:id="@+id/scrollViewLivroEditar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLivroEditar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layoutLivroEditarContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- TÍTULO -->
+            <TextView
+                android:id="@+id/tvTituloSecaoEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar dados do livro"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etTituloLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Título*"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:textSize="14sp" />
+
+            <!-- AUTOR -->
+            <EditText
+                android:id="@+id/etAutorLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Autor*"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:textSize="14sp" />
+
+            <!-- ANO -->
+            <EditText
+                android:id="@+id/etAnoLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Ano (opcional)"
+                android:inputType="number"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:textSize="14sp" />
+
+            <!-- TIPO E STATUS -->
+            <LinearLayout
+                android:id="@+id/layoutTipoStatusEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerTipoLivroEditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/white" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerStatusLivroEditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/white" />
+            </LinearLayout>
+
+            <!-- DESCRIÇÃO -->
+            <EditText
+                android:id="@+id/etDescricaoLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:gravity="top|start"
+                android:hint="Descrição (opcional)"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:textSize="14sp" />
+
+            <!-- LINK E-BOOK -->
+            <EditText
+                android:id="@+id/etLinkEbookEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Link do e-book (obrigatório se Digital)"
+                android:inputType="textUri"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:textSize="14sp" />
+
+            <!-- ERRO -->
+            <TextView
+                android:id="@+id/tvErroLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#B91C1C"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <!-- BOTÕES -->
+            <LinearLayout
+                android:id="@+id/layoutBotoesLivroEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCancelarLivroEditar"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Cancelar"
+                    android:textAllCaps="false"
+                    android:textSize="13sp" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSalvarLivroEditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Salvar"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    android:backgroundTint="#10172B"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

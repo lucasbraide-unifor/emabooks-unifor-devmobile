@@ -140,7 +140,7 @@ class ActivityHome : AppCompatActivity() {
 
     private fun abrirDetalheLivro(livro: Livro) {
         val intent = Intent(this, ActivityBookDetails::class.java)
-        intent.putExtra(ActivityBookDetails.EXTRA_LIVRO, livro) // Livro é Serializable
+        intent.putExtra(ActivityBookDetails.EXTRA_LIVRO, livro.id) // Livro é Serializable
         startActivity(intent)
     }
 
@@ -317,8 +317,6 @@ class ActivityHome : AppCompatActivity() {
                             categorias = categorias,
                             capaUrl = capaUrl,
                             statusGeral = statusGeral,
-                            totalExemplaresFisicos = totalFisicos,
-                            exemplaresFisicosDisponiveis = exemplaresDisp,
                             urlAcessoDigital = doc.getString("urlAcessoDigital"),
                             descricao = doc.getString("descricao"),
                             createdAt = doc.getTimestamp("createdAt"),
@@ -666,7 +664,7 @@ class ActivityHome : AppCompatActivity() {
 private fun Livro.isDisponivelParaUI(): Boolean {
     if (statusGeral != StatusLivro.DISPONIVEL) return false
     return when (tipoAcervo) {
-        TipoAcervo.FISICO -> exemplaresFisicosDisponiveis > 0
+        TipoAcervo.FISICO -> true
         TipoAcervo.DIGITAL, TipoAcervo.HIBRIDO -> true
     }
 }

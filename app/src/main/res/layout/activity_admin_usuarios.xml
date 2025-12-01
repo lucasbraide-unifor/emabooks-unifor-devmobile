@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootUsuarios"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FAFB"
+    tools:context=".ActivityAdminUsuarios">
+
+    <!-- TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarUsuarios"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="#0F172A"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:title="Usuários &amp; Admins"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CONTEÚDO -->
+    <ScrollView
+        android:id="@+id/scrollViewUsuarios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarUsuarios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layoutUsuariosContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- BUSCA -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/iconSearch"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/common_google_signin_btn_icon_dark"
+                        app:tint="#9CA3AF" />
+
+                    <EditText
+                        android:id="@+id/editTextSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:hint="Buscar por nome ou e-mail..."
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="#111827"
+                        android:textColorHint="#9CA3AF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FILTROS / ADICIONAR -->
+            <LinearLayout
+                android:id="@+id/layoutFiltrosAdicionar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonFiltros"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Filtros"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_nav_acervo"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="#111827" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonAdicionar"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#0F172A"
+                    android:text="+ Adicionar"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- QTD DE USUÁRIOS -->
+            <TextView
+                android:id="@+id/textViewQtdUsuarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="0 usuário(s) encontrado(s)"
+                android:textColor="#6B7280"
+                android:textSize="13sp" />
+
+            <!-- ESTATÍSTICAS -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEstatisticas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/textEstatisticasTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estatísticas"
+                        android:textColor="#111827"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Usuários:"
+                            android:textColor="#4B5563"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/textEstatUsuarios"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#111827"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Admins:"
+                            android:textColor="#4B5563"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/textEstatAdmins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#111827"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Inativos:"
+                            android:textColor="#4B5563"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/textEstatInativos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#111827"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LISTA DINÂMICA DE USUÁRIOS -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_usuario" />
+
+            <!-- PAGINAÇÃO (opcionalmente você implementa depois) -->
+            <LinearLayout
+                android:id="@+id/layoutPaginacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonAnterior"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Anterior"
+                    android:textAllCaps="false"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textPaginaInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Página 1"
+                    android:textColor="#6B7280"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonProxima"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#0F172A"
+                    android:text="Próxima"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

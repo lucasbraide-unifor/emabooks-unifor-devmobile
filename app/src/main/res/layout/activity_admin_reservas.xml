@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAdminReservas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".ActivityAdminReservas">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdminReservas"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/black"
+        app:title="Gerir Empréstimos"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:titleTextColor="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/contentAdminReservas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/tvTituloReservasAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Empréstimos / Reservas"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Busca por usuário / livro -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/etBuscaReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Buscar por usuário ou livro"
+                android:imeOptions="actionSearch"
+                android:singleLine="true" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBuscarReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Resumo: pendentes / aprovadas / atrasadas -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchFiltrarPendentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Apenas pendentes" />
+
+        <LinearLayout
+            android:id="@+id/layoutResumoReservas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvResumoPendentesValor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pendentes"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvResumoAprovadasValor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aprovadas"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvResumoAtrasadasValor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atrasadas"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Lista de empréstimos / reservas -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvReservas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp" />
+
+        <!-- Mensagem vazia -->
+        <TextView
+            android:id="@+id/tvListaReservasVazia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nenhuma reserva encontrada."
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Botão para cadastrar novo empréstimo -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNovaReserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

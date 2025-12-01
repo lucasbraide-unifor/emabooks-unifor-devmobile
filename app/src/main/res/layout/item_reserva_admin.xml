@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvReservaUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuário"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvReservaLivro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Livro"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvReservaDatas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Emp.: 10/10/2025 • Dev.: 17/10/2025"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvReservaStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATIVO"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

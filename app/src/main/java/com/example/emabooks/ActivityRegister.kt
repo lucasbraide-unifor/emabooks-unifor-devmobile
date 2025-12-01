@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -25,7 +26,7 @@ class ActivityRegister : AppCompatActivity() {
 
     // Firestore
     private lateinit var fb: FirebaseFirestore
-    private val collectionName = "user" // mantendo o padrão salvo no contexto
+    private val collectionName = "users" // mantendo o padrão salvo no contexto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,15 +109,19 @@ class ActivityRegister : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
 
-                // Monta o documento do usuário
                 val userDoc = hashMapOf(
-                    "nome" to nome,
+                    "nomeCompleto" to nome,
                     "email" to email,
                     "matricula" to matricula,
-                    // ⚠️ NÃO salve senha em claro em produção — usar Firebase Auth.
-                    "senha_demo" to senha, // apenas para testes locais
-                    "createdAt" to Timestamp.now()
+                    "senha" to senha,
+                    "createdAt" to Timestamp.now(),
+                    "updatedAt" to Timestamp.now(),
+                    "isAdmin" to false,
+                    "ativo" to true
                 )
+
+                // Salva o documento
+
 
                 fb.collection(collectionName)
                     .add(userDoc)

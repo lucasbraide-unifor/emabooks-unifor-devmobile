@@ -18,7 +18,7 @@ class ActivityForgotPassword : AppCompatActivity() {
     private lateinit var tvBackToLogin: TextView
 
     private lateinit var fb: FirebaseFirestore
-    private val collectionName = "user"
+    private val collectionName = "users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

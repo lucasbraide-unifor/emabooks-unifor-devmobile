@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Toolbar admin (preta) -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarReservaDetalhe"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/black"
+        app:title="Detalhe do Empréstimo"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+    <!-- Conteúdo scrollável -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="16dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Usuário -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuário*"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsuarioReserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ID ou nome do usuário"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Livro -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Livro*"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLivroReserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ID ou título do livro"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Data de Início / Empréstimo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Data de Início*"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDataInicioReserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="dd/MM/yyyy"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Data de Devolução -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Data de Devolução*"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDataDevolucaoReserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="dd/MM/yyyy"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Status -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Status"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <Spinner
+                android:id="@+id/spinnerStatusReserva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" />
+
+            <!-- Mensagem de erro -->
+            <TextView
+                android:id="@+id/tvErroReserva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+
+            <!-- Botões de renovação -->
+            <LinearLayout
+                android:id="@+id/layoutBotoesRenovacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="end">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRejeitarRenovacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rejeitar"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_marginEnd="8dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAprovarRenovacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aprovar"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Botões principais -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelarReserva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancelar"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvarReserva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salvar"
+                    style="@style/Widget.MaterialComponents.Button" />
+            </LinearLayout>
+
+            <!-- Encerrar / Excluir -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEncerrarReserva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encerrar"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExcluirReserva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excluir"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
