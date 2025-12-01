@@ -8,7 +8,6 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,8 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.Normalizer
 import java.util.Locale
 import kotlin.math.ceil
+import com.example.emabooks.BaseActivity
 
-class ActivityHome : AppCompatActivity() {
+class ActivityHome : BaseActivity() {
 
     // Views
     private lateinit var etBuscaLivro: EditText

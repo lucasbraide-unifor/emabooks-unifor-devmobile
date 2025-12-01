@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,7 +14,7 @@ import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ActivityMinhaConta : AppCompatActivity() {
+class ActivityMinhaConta : BaseActivity() {
 
     // HEADER
     private lateinit var btnLogout: ImageButton
@@ -68,7 +67,8 @@ class ActivityMinhaConta : AppCompatActivity() {
         setupFavoritosRecycler()
         setupLogout()
 
-        AppConfigManager.applyUserConfig(this)
+        // NÃO precisa mais chamar AppConfigManager.applyUserConfig(this) aqui,
+        // pois a BaseActivity já aplica após o setContentView.
 
         carregarDadosUsuario()
         carregarResumoEmprestimos()

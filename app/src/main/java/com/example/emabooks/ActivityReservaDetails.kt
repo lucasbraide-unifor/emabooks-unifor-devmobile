@@ -9,7 +9,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Date
 
-class ActivityReservaDetails : AppCompatActivity() {
+class ActivityReservaDetails : BaseActivity () {
 
     companion object {
         const val EXTRA_RESERVA_ID = "EXTRA_RESERVA_ID"

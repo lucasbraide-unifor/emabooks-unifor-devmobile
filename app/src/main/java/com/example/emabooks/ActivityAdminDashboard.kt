@@ -87,7 +87,7 @@ class AdminDashboardActivity : AppCompatActivity() {
         }
 
         cardViewMultas.setOnClickListener {
-            Toast.makeText(this, "Tela de Multas em desenvolvimento.", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ActivityAdminMultas::class.java))
         }
 
         cardViewUsuarios.setOnClickListener {

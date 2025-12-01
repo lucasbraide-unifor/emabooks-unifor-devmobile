@@ -28,6 +28,12 @@ class ActivityAdminReservas : AppCompatActivity() {
     // Firestore
     private lateinit var fb: FirebaseFirestore
     private val COLLECTION_RESERVAS = "reservas"
+    private val COLLECTION_USERS = "users"
+    private val COLLECTION_LIVROS = "livros"
+
+    // Cache de nomes de usuário e títulos de livros
+    private val usuariosCache = mutableMapOf<String, String>()
+    private val livrosCache = mutableMapOf<String, String>()
 
     // Views
     private lateinit var toolbarAdminReservas: MaterialToolbar
@@ -84,9 +90,18 @@ class ActivityAdminReservas : AppCompatActivity() {
     }
 
     private fun setupRecycler() {
-        adapter = ReservaAdminAdapter(emptyList()) { reserva ->
-            abrirDetalheReserva(reserva)
-        }
+        adapter = ReservaAdminAdapter(
+            reservas = emptyList(),
+            onClick = { reserva ->
+                abrirDetalheReserva(reserva)
+            },
+            getUsuarioNome = { usuarioId ->
+                usuariosCache[usuarioId] ?: usuarioId
+            },
+            getLivroTitulo = { livroId ->
+                livrosCache[livroId] ?: livroId
+            }
+        )
         rvReservas.layoutManager = LinearLayoutManager(this)
         rvReservas.adapter = adapter
     }
@@ -110,8 +125,7 @@ class ActivityAdminReservas : AppCompatActivity() {
         }
 
         fabNovaReserva.setOnClickListener {
-            val intent = Intent(this, ActivityAdminReservaDetalhe::class.java)
-            // Sem EXTRA -> cadastro de nova reserva / empréstimo
+            val intent = Intent(this, ActivityAdminNovaReserva::class.java)
             startActivity(intent)
         }
     }
@@ -127,10 +141,53 @@ class ActivityAdminReservas : AppCompatActivity() {
                     todasReservas.add(reserva)
                 }
 
-                aplicarFiltrosEBusca()
+                // Depois de carregar reservas, carrega os dados de usuários e livros
+                carregarUsuariosELivros {
+                    aplicarFiltrosEBusca()
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Erro ao carregar reservas.", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    /**
+     * Carrega todos os usuários e livros para preencher os caches
+     * e permitir que o card mostre nomeCompleto e título corretamente.
+     *
+     * Para o tamanho do app da faculdade, é aceitável carregar todos;
+     * se crescer muito, daria pra filtrar só pelos IDs usados.
+     */
+    private fun carregarUsuariosELivros(onComplete: () -> Unit) {
+        usuariosCache.clear()
+        livrosCache.clear()
+
+        fb.collection(COLLECTION_USERS)
+            .get()
+            .addOnSuccessListener { usuariosSnapshot ->
+                for (doc in usuariosSnapshot.documents) {
+                    val nomeCompleto = doc.getString("nomeCompleto") ?: doc.id
+                    usuariosCache[doc.id] = nomeCompleto
+                }
+
+                // Depois de carregar usuários, carrega livros
+                fb.collection(COLLECTION_LIVROS)
+                    .get()
+                    .addOnSuccessListener { livrosSnapshot ->
+                        for (doc in livrosSnapshot.documents) {
+                            val titulo = doc.getString("titulo") ?: doc.id
+                            livrosCache[doc.id] = titulo
+                        }
+                        onComplete()
+                    }
+                    .addOnFailureListener {
+                        // Mesmo se falhar, segue com o que tiver
+                        onComplete()
+                    }
+            }
+            .addOnFailureListener {
+                // Se falhar ao carregar usuários, tenta pelo menos aplicar filtros
+                onComplete()
             }
     }
 
@@ -156,8 +213,10 @@ class ActivityAdminReservas : AppCompatActivity() {
             baseFiltradaPorStatus
         } else {
             baseFiltradaPorStatus.filter { reserva ->
-                val usuarioCampo = reserva.usuarioId.lowercase(Locale.getDefault())
-                val livroCampo = reserva.livroId.lowercase(Locale.getDefault())
+                val usuarioCampo = usuariosCache[reserva.usuarioId]?.lowercase(Locale.getDefault())
+                    ?: reserva.usuarioId.lowercase(Locale.getDefault())
+                val livroCampo = livrosCache[reserva.livroId]?.lowercase(Locale.getDefault())
+                    ?: reserva.livroId.lowercase(Locale.getDefault())
                 usuarioCampo.contains(termoLower) || livroCampo.contains(termoLower)
             }
         }
@@ -212,7 +271,9 @@ class ActivityAdminReservas : AppCompatActivity() {
     // -----------------------------
     class ReservaAdminAdapter(
         private var reservas: List<Reserva>,
-        private val onClick: (Reserva) -> Unit
+        private val onClick: (Reserva) -> Unit,
+        private val getUsuarioNome: (String) -> String,
+        private val getLivroTitulo: (String) -> String
     ) : RecyclerView.Adapter<ReservaAdminAdapter.ReservaViewHolder>() {
 
         private val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -233,10 +294,9 @@ class ActivityAdminReservas : AppCompatActivity() {
         override fun onBindViewHolder(holder: ReservaViewHolder, position: Int) {
             val reserva = reservas[position]
 
-            // Aqui usamos usuarioId e livroId; se você tiver campos de nome/título,
-            // pode trocar para reserva.usuarioNome ?: reserva.usuarioId, etc.
-            holder.tvUsuario.text = reserva.usuarioId
-            holder.tvLivro.text = reserva.livroId
+            // Usa os nomes/títulos vindos das collections users e livros via cache
+            holder.tvUsuario.text = getUsuarioNome(reserva.usuarioId)
+            holder.tvLivro.text = getLivroTitulo(reserva.livroId)
 
             val dataEmprestimo = reserva.dataReserva?.toDate()?.let { sdf.format(it) } ?: "-"
             val dataDevolucao = reserva.expiraEm?.toDate()?.let { sdf.format(it) } ?: "-"

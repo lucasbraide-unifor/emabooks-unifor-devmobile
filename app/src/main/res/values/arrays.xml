@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="filtro_status_multas">
+        <item>Todos</item>
+        <item>Pendentes</item>
+        <item>Pagas</item>
+    </string-array>
+
+    <string-array name="ordenacao_data_multas">
+        <item>Mais recentes</item>
+        <item>Mais antigas</item>
+    </string-array>
+</resources>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.google.android.material.button.MaterialButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,12 +16,13 @@ import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ActivityReservas : AppCompatActivity() {
+class ActivityReservas : BaseActivity() {
 
     // Views
     private lateinit var tvCarregandoReservas: TextView
     private lateinit var tvSemReservas: TextView
     private lateinit var tvFiltroStatusReserva: TextView
+    private lateinit var btnMinhasMultas: MaterialButton
     private lateinit var rvReservas: RecyclerView
     private lateinit var bottomNavigationReservas: BottomNavigationView
 
@@ -63,6 +65,7 @@ class ActivityReservas : AppCompatActivity() {
         bindViews()
         setupRecycler()
         setupFiltroStatus()
+        setupMinhasMultas()
         setupBottomNavigation()
     }
 
@@ -76,6 +79,7 @@ class ActivityReservas : AppCompatActivity() {
         tvCarregandoReservas = findViewById(R.id.tvCarregandoReservas)
         tvSemReservas = findViewById(R.id.tvSemReservas)
         tvFiltroStatusReserva = findViewById(R.id.tvFiltroStatusReserva)
+        btnMinhasMultas = findViewById(R.id.btnMinhasMultas)
         rvReservas = findViewById(R.id.rvReservas)
         bottomNavigationReservas = findViewById(R.id.bottomNavigationReservas)
     }
@@ -97,6 +101,13 @@ class ActivityReservas : AppCompatActivity() {
     private fun setupFiltroStatus() {
         tvFiltroStatusReserva.setOnClickListener {
             abrirDialogFiltro()
+        }
+    }
+
+    private fun setupMinhasMultas() {
+        btnMinhasMultas.setOnClickListener {
+            val intent = Intent(this, ActivityMinhasMultas::class.java)
+            startActivity(intent)
         }
     }
 

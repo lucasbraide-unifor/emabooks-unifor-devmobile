@@ -1,7 +1,25 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.EmaBooks" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Paleta base escura -->
+    <color name="ema_primary">#D0BCFF</color>
+    <color name="ema_on_primary">#381E72</color>
+
+    <color name="ema_secondary">#CCC2DC</color>
+    <color name="ema_on_secondary">#332D41</color>
+
+    <color name="ema_background">#121212</color>
+    <color name="ema_on_background">#E6E1E5</color>
+
+    <color name="ema_surface">#1E1E1E</color>
+    <color name="ema_on_surface">#E6E1E5</color>
+
+    <!-- Opcional: superfícies elevadas, barras, etc -->
+    <color name="ema_surface_variant">#49454F</color>
+    <color name="ema_on_surface_variant">#CAC4D0</color>
+
+    <!-- Erro / avisos -->
+    <color name="ema_error">#F2B8B5</color>
+    <color name="ema_on_error">#601410</color>
+
 </resources>

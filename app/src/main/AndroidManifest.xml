@@ -49,6 +49,14 @@
             android:name=".ActivityBookDetails"
             android:exported="false"/>
 
+        <activity android:name=".ActivityAdminNovaReserva"/>
+        <activity android:name=".ActivityAdminMultas"/>
+        <activity android:name=".ActivityAdminMultaDetalhe"/>
+        <activity android:name=".ActivityAdminNovaMulta"/>
+        <activity android:name=".ActivityMinhasMultas" />
+        <activity android:name=".ActivityComoRegularizarMultas" />
+
+
         <activity
             android:name=".ActivityLogin"
             android:exported="true">

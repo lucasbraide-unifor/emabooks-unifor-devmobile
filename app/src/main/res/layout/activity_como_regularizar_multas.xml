@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootComoRegularizarMultas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarComoRegularizarMultas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:elevation="4dp"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:title="Como regularizar multas"
+        app:titleTextColor="?attr/colorOnSurface"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollComoRegularizarMultas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarComoRegularizarMultas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/containerComoRegularizarMultas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Aviso em destaque -->
+            <TextView
+                android:id="@+id/tvAvisoMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Atenção: multas devem ser regularizadas diretamente com a biblioteca, dentro dos prazos estabelecidos pela instituição."
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="?attr/colorError" />
+
+            <!-- Formas de pagamento -->
+            <TextView
+                android:id="@+id/tvTituloFormasPagamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Formas de pagamento"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <TextView
+                android:id="@+id/tvFormasPagamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="• Pagamento no balcão da biblioteca.\n• Pagamento via boleto ou guia emitida pela instituição (quando disponível).\n• Outras formas definidas pela biblioteca da Unifor."
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+            <!-- Informações de contato -->
+            <TextView
+                android:id="@+id/tvTituloContatoMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Informações de contato"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <TextView
+                android:id="@+id/tvContatoMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="• E-mail: biblioteca@unifor.br\n• Telefone: (85) 99999-9999\n• Balcão de atendimento da Biblioteca Central"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+            <!-- Horário de funcionamento -->
+            <TextView
+                android:id="@+id/tvTituloHorarioMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Horário de funcionamento"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <TextView
+                android:id="@+id/tvHorarioMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Segunda a sexta: 8h às 21h\nSábados: 8h às 12h\n(Confirme sempre eventuais alterações no site da Unifor.)"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+            <!-- Passo a passo -->
+            <TextView
+                android:id="@+id/tvTituloPassoAPassoMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Como proceder"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <TextView
+                android:id="@+id/tvPassoAPassoMultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="1. Verifique suas multas na tela “Minhas Multas”.\n2. Anote o valor total pendente e os livros correspondentes.\n3. Dirija-se ao balcão da biblioteca ou entre em contato pelos canais oficiais.\n4. Siga as orientações da equipe para emissão e pagamento do boleto/guia, quando aplicável.\n5. Após pagar, aguarde a compensação e a baixa das multas no sistema."
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
