@@ -220,8 +220,18 @@ class ActivityMinhaConta : BaseActivity() {
 
     private fun setupFavoritosRecycler() {
         favoritosAdapter = FavoriteBooksAdapter(listaFavoritos) { livro ->
+            val livroId = livro.id
+            if (livroId.isNullOrBlank()) {
+                Toast.makeText(
+                    this,
+                    "Não foi possível abrir o livro favorito (ID indefinido).",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@FavoriteBooksAdapter
+            }
+
             val intent = Intent(this, ActivityBookDetails::class.java)
-            intent.putExtra(ActivityBookDetails.EXTRA_LIVRO, livro)
+            intent.putExtra(ActivityBookDetails.EXTRA_LIVRO, livroId)
             startActivity(intent)
         }
         rvFavoritos.layoutManager = LinearLayoutManager(this)
