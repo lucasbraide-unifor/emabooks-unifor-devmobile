@@ -4,6 +4,7 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+
 android {
     namespace = "com.example.emabooks"
     compileSdk = 36
@@ -16,6 +17,17 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildFeatures {
+            buildConfig = true
+        }
+
+        // Expor a chave pro código Kotlin: BuildConfig.GEMINI_API_KEY
+        buildConfigField(
+            "String",
+            "GEMINI_API_KEY",
+            "\"AIzaSyCxdcxNPQ1VPL_8aEbxlFB7V2lMBxstoi0\""
+        )
     }
 
     buildTypes {
@@ -44,8 +56,15 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.generativeai)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Para lifecycleScope em Activity/Fragment
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+
+    // Coroutines para uso com lifecycleScope.launch
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

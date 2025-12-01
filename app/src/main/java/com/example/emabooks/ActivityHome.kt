@@ -16,6 +16,11 @@ import java.text.Normalizer
 import java.util.Locale
 import kotlin.math.ceil
 import com.example.emabooks.BaseActivity
+import android.view.View
+import android.widget.EditText
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.launch
 
 class ActivityHome : BaseActivity() {
 
@@ -35,6 +40,7 @@ class ActivityHome : BaseActivity() {
     private var tvPaginaAnterior: TextView? = null
     private var tvPaginaProxima: TextView? = null
 
+    private lateinit var btnChatBibliotecario: MaterialButton
     private lateinit var bottomNavigation: BottomNavigationView
 
     // Firestore
@@ -71,6 +77,7 @@ class ActivityHome : BaseActivity() {
         setupOrdering()
         setupPaginationControls()
         setupBottomNavigation()
+        setupChatBibliotecario()
 
         performInitialLoad()
     }
@@ -123,11 +130,71 @@ class ActivityHome : BaseActivity() {
         tvOrdenarAutor = findViewById(R.id.tvOrdenarAutor)
         tvInfoPagina = findViewById(R.id.tvInfoPagina)
         tvLimparFiltros = findViewById(R.id.tvLimparFiltros)
+        btnChatBibliotecario = findViewById(R.id.btnChatBibliotecario)
 
         tvPaginaAnterior = findViewById(R.id.tvPaginaAnterior)
         tvPaginaProxima = findViewById(R.id.tvPaginaProxima)
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
+    }
+    /**
+     * Configura o botão do bibliotecário virtual (Gemini).
+     * Abre um diálogo simples onde o usuário digita a pergunta
+     * e recebe a resposta gerada pelo modelo.
+     */
+    private fun setupChatBibliotecario() {
+        btnChatBibliotecario.setOnClickListener {
+            val editText = EditText(this).apply {
+                hint = "Pergunte algo sobre livros, empréstimos ou multas..."
+            }
+
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Bibliotecário virtual")
+                .setView(editText)
+                .setPositiveButton("Perguntar", null)
+                .setNegativeButton("Cancelar", null)
+                .create()
+
+            dialog.setOnShowListener {
+                val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                positiveButton.setOnClickListener {
+                    val pergunta = editText.text?.toString()?.trim().orEmpty()
+                    if (pergunta.isBlank()) {
+                        Toast.makeText(
+                            this,
+                            "Digite uma pergunta para o bibliotecário.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+
+                    editText.isEnabled = false
+                    positiveButton.isEnabled = false
+
+                    lifecycleScope.launch {
+                        try {
+                            val resposta = GeminiService.askBibliotecario(pergunta)
+                            AlertDialog.Builder(this@ActivityHome)
+                                .setTitle("Resposta do bibliotecário")
+                                .setMessage(resposta)
+                                .setPositiveButton("OK", null)
+                                .show()
+                            dialog.dismiss()
+                        } catch (e: Exception) {
+                            editText.isEnabled = true
+                            positiveButton.isEnabled = true
+                            Toast.makeText(
+                                this@ActivityHome,
+                                "Erro ao falar com o bibliotecário.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+
+            dialog.show()
+        }
     }
 
     private fun setupRecyclerView() {
