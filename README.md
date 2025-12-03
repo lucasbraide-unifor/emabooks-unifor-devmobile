@@ -236,6 +236,3 @@ Handerson
 Maria Alice
 Aluno da disciplina Desenvolvimento Mobile (2025.2)
 Universidade de Fortaleza — Unifor
-✅ README com GIFs das telas
-
-Quer que eu gere a versão final com imagens (mock) incluídas?
